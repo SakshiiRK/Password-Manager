@@ -66,6 +66,7 @@ def usd(value):
 import secrets
 import string
 
+# random password generation
 def generate_random_password(length=16, use_uppercase=True, use_digits=True, use_symbols=True):
     """
     Generate a random password with the given specifications.
