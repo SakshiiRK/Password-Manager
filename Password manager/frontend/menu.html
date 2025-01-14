@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Manager</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Password Manager</h1>
+        <div class="button-container">
+            <button id="addUpdatePassword">Add/Update Password</button>
+            <button id="lookupPassword">Look Up Stored Password</button>
+            <button id="deletePassword">Delete Password</button>
+            <button id="deleteAllData">Delete All Data (Including Master Password)</button>
+        </div>
+    </div>
+
+    <script>
+        const addUpdatePasswordButton = document.getElementById('addUpdatePassword');
+        const lookupPasswordButton = document.getElementById('lookupPassword');
+        const deletePasswordButton = document.getElementById('deletePassword');
+        const deleteAllDataButton = document.getElementById('deleteAllData');
+
+        const socket = new WebSocket('ws://localhost:6789');
+
+        addUpdatePasswordButton.addEventListener("click", () =>
+        {
+            window.location.href = "./set_password.html";
+        });
+        
+        lookupPasswordButton.addEventListener("click", () => 
+        {
+            window.location.href = "./lookup_password.html";
+        });
+
+        deletePasswordButton.addEventListener("click", () =>
+        {
+            window.location.href = "./delete_password.html";
+        });
+        deleteAllDataButton.addEventListener("click", () => 
+        {
+            socket.send("6");
+            window.location.href = "./enter_master.html";
+        });
+
+    </script>
+</body>
+
+</html>
